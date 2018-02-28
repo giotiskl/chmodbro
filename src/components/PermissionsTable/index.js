@@ -1,15 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Table from '../Table';
-import fontawesome from '@fortawesome/fontawesome'
+import Checkbox from '../Checkbox';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faUser from '@fortawesome/fontawesome-free-solid/faUser';
 import faUsers from '@fortawesome/fontawesome-free-solid/faUsers';
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
 import faPencilAlt from '@fortawesome/fontawesome-free-solid/faPencilAlt';
-import faCogs from '@fortawesome/fontawesome-free-solid/faCogs';
+import faCog from '@fortawesome/fontawesome-free-solid/faCog';
 
-const PermissionsTable = (props) => {
+const bits = [4, 2, 1];
+const modes = ['Read', 'Write', 'Execute'];
+const icons = [faSearch, faPencilAlt, faCog];
+const userTypes = ['user', 'group', 'others'];
+
+const PermissionsTable = ({ handleCheckboxChange }) => {
   return (
     <Table>
       <thead>
@@ -17,35 +22,32 @@ const PermissionsTable = (props) => {
           <th></th>
           <th><FontAwesomeIcon icon={faUser} /> User</th>
           <th><FontAwesomeIcon icon={faUsers} /> Group</th>
-          <th><FontAwesomeIcon icon={faUsers} /><FontAwesomeIcon icon={faUsers} /> Others</th>
+          <th className="others-icon-wrapper"><FontAwesomeIcon icon={faUsers} className="others-icon-1" /><FontAwesomeIcon icon={faUsers} className="others-icon-2" /> Others</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th>Read (4) <FontAwesomeIcon icon={faSearch} /></th>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Write (2) <FontAwesomeIcon icon={faPencilAlt} /></th>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Execute (1) <FontAwesomeIcon icon={faCogs} /></th>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        {
+          bits.map((bit, index) => (
+            <tr key={index}>
+              <th>{modes[index]} ({bit}) <FontAwesomeIcon icon={icons[index]}/></th>
+              { [1,2,3].map((index) => (
+                <td key={index}>
+                  <Checkbox
+                    userType={userTypes[index-1]}
+                    bits={bit}
+                    handleChange={handleCheckboxChange} />
+                </td>
+              ))}
+            </tr>
+          ))
+        }
       </tbody>
     </Table>
   )
 }
 
 PermissionsTable.propTypes = {
-
+  handleCheckboxChange: PropTypes.func.isRequired,
 }
 
 export default PermissionsTable;
