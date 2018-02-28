@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import PermissionsTable from './components/PermissionsTable';
-import ChmodCode from './components/ChmodCode'
+import ChmodModePicker from './components/ChmodModePicker';
+import ChmodCode from './components/ChmodCode';
+
+const bitsToLettersMap = {  0: '', 1: 'x', 2: 'w', 3: 'wx', 4: 'r', 5: 'rx', 6: 'rw', 7: 'rwx' };
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      mode: 'code',
       bits: {
         user: 0,
         group: 0,
@@ -15,6 +19,14 @@ class App extends Component {
       },
     };
   }
+
+  /**
+   * Updates the mode in state
+   *
+   * @param {string} mode - 'code' or 'ugo'
+   * @return {undefined}
+   */
+  handleModeChange = mode => this.setState({ mode });
 
   /**
    * Toggle bits in the state for u-g-o
@@ -33,8 +45,15 @@ class App extends Component {
     });
   }
 
-  render() {
+  renderChmodCode(mode) {
     const { user, group, others } = this.state.bits;
+    return mode === 'code'
+      ? `${user}${group}${others}`
+      : `u=${bitsToLettersMap[user]},g=${bitsToLettersMap[group]},o=${bitsToLettersMap[others]}`;
+  }
+
+  render() {
+    const { mode } = this.state;
 
     return (
       <main className="App">
@@ -42,7 +61,8 @@ class App extends Component {
           <Row center="xs">
             <Col>
               <PermissionsTable handleCheckboxChange={this.handleCheckboxChange}/>
-              <ChmodCode code={`${user}${group}${others}`}/>
+              <ChmodModePicker mode={mode} onModeChange={this.handleModeChange}/>
+              <ChmodCode mode={mode} code={this.renderChmodCode(mode)}/>
             </Col>
           </Row>
         </Grid>

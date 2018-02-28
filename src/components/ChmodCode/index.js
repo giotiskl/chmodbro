@@ -9,18 +9,17 @@ const Wrapper = styled.section`
   color: white;
   font-size: 28px;
   letter-spacing: 2px;
-  margin-top: 3rem;
   padding: 20px 10px 22px 10px;
   strong {
     color: #4cd137;
     font-size: 32px;
-    letter-spacing: 6px;
+    letter-spacing: ${props => props.mode === 'code' ? '6px' : '0'};
   }
 `;
 
-const ChmodCode = ({code}) => {
+const ChmodCode = ({ mode, code }) => {
   return (
-    <Wrapper>
+    <Wrapper mode={mode}>
       <span className="dollar">$</span> chmod <strong>{code}</strong> file
     </Wrapper>
   )
@@ -28,6 +27,7 @@ const ChmodCode = ({code}) => {
 
 ChmodCode.propTypes = {
   code: PropTypes.string,
+  mode: PropTypes.string,
 };
 
 export default ChmodCode;
