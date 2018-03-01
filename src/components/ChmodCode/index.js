@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { palette } from '../../cssResources';
 
 const Wrapper = styled.section`
-  background-color: #0f0f0f;
+  background-color: ${palette.black};
   border-radius: 8px;
   box-shadow: 0 5px 30px rgba(0,0,0,.25);
   color: white;
@@ -11,7 +12,7 @@ const Wrapper = styled.section`
   letter-spacing: 2px;
   padding: 20px 10px 22px 10px;
   strong {
-    color: #4cd137;
+    color: ${palette.green};
     font-size: 32px;
     letter-spacing: ${props => props.mode === 'code' ? '6px' : '0'};
   }

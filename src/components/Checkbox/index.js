@@ -3,21 +3,23 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
+import { palette } from '../../cssResources';
 
 const CheckboxWrapper = styled.label`
   background-color: white;
-  border: 3px solid #0f0f0f;
+  border: 3px solid ${palette.black};
   border-radius: 3px;
   cursor: pointer;
   display: block;
   margin: 0 auto;
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
 `;
 
 const CheckboxInput = styled.input`
   display: none;
   ~ .Checkbox__input {
+    color: ${palette.black};
     transition: cubic-bezier(.7,-0.5,.3,1.5) .35s;
     transform: scale(0) translate3d(0,0,0);
     margin: 0;

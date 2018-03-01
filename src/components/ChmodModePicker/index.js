@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { palette } from '../../cssResources';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -16,13 +17,13 @@ const Wrapper = styled.section`
     list-style: none;
   }
   li {
-    color: #7d7d7d;
+    color: ${palette.darkGray};
     cursor: pointer;
     position: relative;
     transition: color 350ms ease-out;
     &:after {
       content: "";
-      background-color: #0f0f0f;
+      background-color: ${palette.black};
       display: block;
       width: 100%;
       height: 3px;
@@ -31,11 +32,11 @@ const Wrapper = styled.section`
       transform: scaleX(0);
     }
     &:hover {
-      color: #0f0f0f;
+      color: ${palette.black};
     }
     &.active {
       font-weight: bold;
-      color: #0f0f0f;
+      color: ${palette.black};
       &:after {
         transform: scaleX(1);
       }
