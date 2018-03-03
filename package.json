@@ -1,8 +1,23 @@
 {
   "name": "chmodbro",
   "version": "0.1.0",
-  "private": true,
   "homepage": "https://giotiskl.github.io/chmodbro",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giotiskl/chmodbro.git"
+  },
+  "keywords": [
+    "chmod",
+    "unix",
+    "linux",
+    "calculator",
+    "react",
+    "styled-components"
+  ],
+  "authors": [
+    "Yiotis Kaltsikis <yiotiskal@gmail.com> (https://github.com/giotiskl)"
+  ],
+  "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.4",
     "@fortawesome/fontawesome-free-brands": "^5.0.8",
