@@ -4,7 +4,5 @@ import 'normalize.css';
 import 'react-flexbox-grid';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
