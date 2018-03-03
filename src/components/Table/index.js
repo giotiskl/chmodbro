@@ -1,13 +1,13 @@
-import React from 'react'
 import styled from 'styled-components';
 
 const Table = styled.table`
+  margin: 0 auto;
   th {
     font-size: 20px;
     font-weight: bold;
   }
   th, td {
-    padding: 15px;
+    padding: 20px;
   }
   tbody th {
     text-align: right;
@@ -16,14 +16,17 @@ const Table = styled.table`
     display: inline-block;
     margin-left: 5px;
   }
+  .user-icon {
+    font-size: .75em;
+  }
   .others-icon-wrapper {
     position: relative;
   }
   .others-icon-1 {
     color: #7d7d7d;
     width: 1em;
-    left: 22px;
-    top: 10px;
+    left: 17px;
+    top: 17px;
     position: absolute;
     z-index: 0;
   }
