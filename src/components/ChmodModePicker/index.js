@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { palette } from '../../cssResources';
 
 const Wrapper = styled.section`
-  margin-top: 3rem;
+  margin-top: 40px;
   h2, ul, li {
     font-weight: normal;
     text-align: left;

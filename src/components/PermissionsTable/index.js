@@ -20,7 +20,7 @@ const PermissionsTable = ({ handleCheckboxChange }) => {
       <thead>
         <tr>
           <th></th>
-          <th><FontAwesomeIcon icon={faUser} /> User</th>
+          <th><FontAwesomeIcon className="user-icon" icon={faUser} /> User</th>
           <th><FontAwesomeIcon icon={faUsers} /> Group</th>
           <th className="others-icon-wrapper"><FontAwesomeIcon icon={faUsers} className="others-icon-1" /><FontAwesomeIcon icon={faUsers} className="others-icon-2" /> Others</th>
         </tr>

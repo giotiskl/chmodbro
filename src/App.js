@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
+import Header from './components/Header';
+import Alert from './components/Alert';
 import PermissionsTable from './components/PermissionsTable';
 import ChmodModePicker from './components/ChmodModePicker';
 import ChmodCode from './components/ChmodCode';
@@ -71,9 +73,11 @@ class App extends Component {
     return (
       <Wrapper className="App">
         <Grid fluid>
+          <Header/>
           <Row center="xs" className="App__body">
             <Col>
               <PermissionsTable handleCheckboxChange={this.handleCheckboxChange} />
+              <Alert code={this.renderChmodCode('code')}/>
               <ChmodModePicker mode={mode} onModeChange={this.handleModeChange} />
               <ChmodCode mode={mode} code={this.renderChmodCode(mode)} />
             </Col>
